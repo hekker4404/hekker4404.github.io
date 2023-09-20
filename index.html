@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mishal</title>
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/1025493152301326356/1133375258133528626/Icon.png">
+    <style>
+        body {
+            background-image: url("https://cdn.discordapp.com/attachments/1025493152301326356/1133375043838160946/Banner.png");
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }        
+        .about-me {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            opacity: 1;
+            text-shadow: 0px 0px 10px white;
+            max-width: 55%; /* Limit the width of the box */
+            margin-left: auto; /* Center the box horizontally */
+            margin-right: auto; /* Center the box horizontally */
+        }
+
+        .about-me.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            opacity: 0.9;
+            transition: all 0.8s ease;
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        #profile-image {
+            border-radius: 25px;
+            margin-top: 20px;
+        }
+
+        .show {
+            color: white;
+            font-size: 16px;
+            text-shadow: 0px 0px 10px white;
+            margin-top: 10px;
+        }
+
+        .glow {
+            animation: glow 1s ease-in-out infinite alternate;
+            font-family: Arial, sans-serif;
+        }
+
+        .typing-text::after {
+            content: "｜"; 
+            display: inline-block;
+            animation: blink 0.6s infinite;
+            color: white;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0px 0px 10px white;
+            }
+            to {
+                text-shadow: 0px 0px 20px white;
+            }
+        }
+
+        @keyframes blink {
+            from, to {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="about-me">
+        <h2 class="glow">About Me</h2>
+        <p>Hey, I'm Mishal, a 15-year-old coding nerd and total Discord addict. <span class="typing-text"></span></p>
+    </div>
+    <div class="button-container">
+        <button id="redirect">Check out GitHub</button>
+        <button onclick="window.open('https://www.patreon.com/mishalhossin', '_blank')">Support me on Patreon</button>
+    </div>
+    <script>
+        const typingText = `I'm like the embodiment of "No social life" I totally find my happy place in the coding and tech world. It's where I feel at ease, always diving headfirst into the quest for knowledge and getting better at what I do. Teaching myself how to code has become my jam, and I'm forever on the lookout for fresh challenges that let me level up my skills. I just can't get enough of it! 🚀`;
+        const typingDelay = 20;
+        const showText = document.querySelector('.typing-text');
+        let charIndex = 0;
+
+        function typeText() {
+          if (charIndex < typingText.length) {
+            showText.textContent += typingText.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeText, typingDelay);
+          } else {
+            showText.classList.add('blink-cursor');
+            removeCursorEffect();
+          }
+        }
+
+        function removeCursorEffect() {
+          const cursorEffectScript = document.querySelector('script[type="module"]');
+          cursorEffectScript.remove();
+        }
+
+        typeText();
+
+        document.getElementById('redirect').addEventListener('click', function() {
+          window.location.href = 'https://github.com/mishalhossin';
+        });
+    </script>
+    <script type="module">
+      import { followingDotCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+    
+      new followingDotCursor({ color: ["#260226a6"] });
+    </script>
+</body>
+</html>
